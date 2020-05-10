@@ -1,0 +1,104 @@
+#home-container {
+  height: 100%;
+  margin-bottom: 0;
+  flex: 1;
+  justify-content: center;
+  display: flex;
+  flex-flow: column;
+  padding: 0;
+  padding-top: 2rem;
+  /* overflow-y: auto; */
+  /* margin: auto; */
+  align-items: center;
+}
+
+.custom-row {
+  margin-bottom: 1.5rem;
+  padding: 0;
+  justify-content: start;
+}
+
+.custom-dropdown {
+  margin-right: 30px;
+  margin-bottom: 20px;
+}
+
+.custom-label {
+  text-align: justify;
+  font-weight: 900;
+  margin: 10px;
+}
+
+#input-form {
+  flex: 8;
+}
+
+#header {
+  flex: 2;
+  text-align: center;
+  margin-top: auto;
+}
+
+#main {
+  flex: 4;
+  display: flex;
+  flex-flow: row;
+  margin: auto;
+}
+
+#footer {
+  display: flex;
+  flex: 5;
+  justify-content: center;
+  margin-bottom: auto;
+  /* padding-bottom: 10px; */
+}
+
+.custom-card-design {
+  flex: 5;
+}
+
+.card-header-text-spec {
+  text-align: center;
+  font-weight: 900;
+  color: whitesmoke;
+}
+
+#failure-card-header {
+  background-color: #dc3545;
+}
+
+#success-card-header {
+  background-color: #28a745;
+}
+
+#success-card-body {
+  background-color: #28a745;
+  overflow-x: auto;
+}
+
+#failure-card-body {
+  background-color: #dc3545;
+}
+
+.custom-card-body {
+  opacity: 70%;
+  display: flex;
+  flex-flow: row wrap;
+  margin-bottom: auto;
+}
+
+.card-form-text {
+  color: whitesmoke !important;
+}
+
+.card-form-value {
+  font-weight: 900;
+  word-wrap: break-word;
+}
+
+.card-form-row-flex {
+  flex: 1;
+  display: flex;
+  flex-flow: row wrap;
+}

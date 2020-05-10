@@ -1,0 +1,11 @@
+#api-container {
+  height: 100%;
+  margin-bottom: 0;
+  justify-content: center;
+  text-align: center;
+  font-weight: 900;
+  display: flex;
+  flex-flow: column;
+  padding: 0;
+  padding-top: 2rem;
+}
