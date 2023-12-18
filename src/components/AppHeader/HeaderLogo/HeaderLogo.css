@@ -1,0 +1,28 @@
+.header-logo {
+    padding-left: 50px !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.gradient {
+    text-align: center;
+    font-family: Jua;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    background: linear-gradient(180deg, #00D8BC 0%, #009ECC 51.04%, #005EDE 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-shadow {
+    text-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25);
+}
+
+.text-overlay {
+    position: absolute;
+    z-index: 100;
+}
