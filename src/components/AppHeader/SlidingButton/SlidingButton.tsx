@@ -2,26 +2,11 @@ import React from "react";
 
 import "./SlidingButton.css"
 
-const SlidingButton = (props: { isSelected : boolean, buttonText : string, isLast: boolean }) => {
-
-    let buttonStyleClassList : string;
-    let textStyleClassList : string;
-
-    if (props.isSelected) {
-        if (props.isLast) {
-            buttonStyleClassList = "container-fluid sliding-button button-selected box-shadow-left";
-        } else {
-            buttonStyleClassList = "container-fluid sliding-button button-selected box-shadow-right";
-        }
-        textStyleClassList = "sliding-button-text-style text-selected";
-    } else {
-        buttonStyleClassList = "container-fluid sliding-button";
-        textStyleClassList = "sliding-button-text-style";
-    }
-
+const SlidingButton = (props: { buttonText : string, onClick : () => void }) => {
+    
     return (
-        <div className={ buttonStyleClassList }>
-            <label className={ textStyleClassList }>{ props.buttonText }</label>
+        <div className="container-fluid sliding-button unselectable" onClick={() => props.onClick()}>
+            <label className="sliding-button-text-style unselectable">{ props.buttonText }</label>
         </div>
     );
 }

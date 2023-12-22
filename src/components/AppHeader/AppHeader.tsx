@@ -5,12 +5,10 @@ import HeaderMenu from "./HeaderMenu/HeaderMenu";
 
 const AppHeader = () => {
 
-    const logoHeaderText = "turls.in"
-
     return (
         <div className="container-fluid app-header no-padding">
             <HeaderLogo logoText="turls.in"/>
-            <HeaderMenu />
+            <HeaderMenu namesOfButtons={["Home", "Docs"]} />
         </div>
     );
 
