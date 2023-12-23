@@ -8,7 +8,7 @@ const AppHeader = () => {
     return (
         <div className="container-fluid app-header no-padding">
             <HeaderLogo logoText="turls.in"/>
-            <HeaderMenu namesOfButtons={["Home", "Docs"]} />
+            <HeaderMenu namesOfButtons={["Home", "Docs", "Test", "Drive"]} />
         </div>
     );
 

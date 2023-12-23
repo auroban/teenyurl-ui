@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
-
+// Library imports
+import React, { useState } from "react";
 import _ from "lodash";
 
-// CSS Import
+// CSS imports
 import "./HeaderMenu.css"
+
+// Component imports
 import SlidingButton from "../SlidingButton/SlidingButton";
 
 const HeaderMenu = (props : {namesOfButtons: string[], selectedIndex? : number | undefined}) => {
@@ -22,7 +24,6 @@ const HeaderMenu = (props : {namesOfButtons: string[], selectedIndex? : number |
     }
 
     const [translation, setTranslation] = useState(translations[currentIndex]);
-
 
     const handleClick = (index: number) => {
         console.log("Call coming here: ", index);
