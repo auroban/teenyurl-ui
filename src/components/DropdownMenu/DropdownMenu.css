@@ -1,0 +1,121 @@
+#dd-menu-container {
+    min-width: 100px;
+    position: relative;
+}
+
+#dd-menu-header {
+    width: 100%;
+    display: grid;
+    height: 50px;
+    grid-template-columns: 80% 20%;
+    align-items: center;
+    justify-items: center;
+    border-radius: 10px;
+    border-style: solid;
+    box-sizing: border-box;
+    border-width: 2px;
+    border-color: #FFF;
+    box-shadow: 5px 1px 5px rgba(36, 35, 35, 0.25);
+    background: linear-gradient(180deg, rgba(0, 94, 222, 0.00) 0%, #005EDE 28.15%, #005EDE 73.03%, rgba(0, 94, 222, 0.00) 100%);
+
+    ;
+}
+
+#dd-header-image {
+    max-width: 100%;
+    max-height: 100%;
+    margin-right: 50%;
+}
+
+#dd-menu-items {
+    position: absolute;
+    min-width: 100px;
+    margin-top: 5px;
+    border-radius: 10px;
+    overflow-y: auto;
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #FFF;
+    background: linear-gradient(180deg, rgba(0, 94, 222, 0.00) 0%, #0657c1 15.7%, #0656C2 84.03%, rgba(0, 94, 222, 0.00) 100%);
+    box-shadow: 5px 1px 5px rgba(36, 35, 35, 0.25);
+
+    &::-webkit-scrollbar {
+        width: 15px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	    border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+	    background-color: #F5F5F5;
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #042b5e;
+    }
+}
+
+.dd-menu-header-item {
+    width: 100%;
+    height: auto;
+    padding: 5px;
+}
+
+.dd-menu-item {
+    width: 100%;
+    height: 50px;
+}
+
+.dd-menu-item:hover {
+    background-color: #FFF;
+}
+
+.dd-menu-item:hover label {
+    color: #0657c1;
+}
+
+.state-collapsed {
+    max-height: 0;
+    visibility: hidden;
+}
+
+.state-expanded {
+    visibility: visible;
+    max-height: 300px;
+}
+
+.animate-arrow-up {
+    animation: rotate-up 200ms ease;
+    animation-fill-mode: forwards;
+}
+
+.animate-arrow-down {
+    animation: rotate-down 200ms ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes rotate-up {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-180deg);
+    }
+}
+
+@keyframes rotate-down {
+    from {
+        transform: rotate(-180deg);
+    }
+    to {
+        transform: rotate(0deg);
+    }
+}

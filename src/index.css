@@ -27,3 +27,29 @@ code {
   -webkit-user-select: none;
   -o-user-select: none;
 }
+
+.label-text {
+  color: #FFF; 
+  text-align: center;
+  font-family: Staatliches;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.grid-center {
+  display: grid;
+  grid-template-columns: auto;
+  align-items: center;
+  justify-items: center;
+}
+
+.position-relative {
+  position: relative;
+  width: 100%;
+}
+
+.pointer-on-hover {
+  cursor: pointer;
+}

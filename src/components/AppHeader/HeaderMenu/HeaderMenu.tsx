@@ -26,13 +26,7 @@ const HeaderMenu = (props : {namesOfButtons: string[], selectedIndex? : number |
     const [translation, setTranslation] = useState(translations[currentIndex]);
 
     const handleClick = (index: number) => {
-        console.log("Call coming here: ", index);
-        let translation : number;
-        if (currentIndex < index) {
-            translation = index * translationBy;
-        } else {
-            translation = index * translationBy;
-        }
+        console.debug("Selected Tab Index: ", index);
         setTranslation(translations[index]);
     }
 
