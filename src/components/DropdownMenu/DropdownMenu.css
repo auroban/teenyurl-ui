@@ -17,8 +17,6 @@
     border-color: #FFF;
     box-shadow: 5px 1px 5px rgba(36, 35, 35, 0.25);
     background: linear-gradient(180deg, rgba(0, 94, 222, 0.00) 0%, #005EDE 28.15%, #005EDE 73.03%, rgba(0, 94, 222, 0.00) 100%);
-
-    ;
 }
 
 #dd-header-image {
@@ -32,13 +30,14 @@
     min-width: 100px;
     margin-top: 5px;
     border-radius: 10px;
-    overflow-y: auto;
+    overflow: hidden;
     box-sizing: border-box;
     border-style: solid;
     border-width: 2px;
     border-color: #FFF;
     background: linear-gradient(180deg, rgba(0, 94, 222, 0.00) 0%, #0657c1 15.7%, #0656C2 84.03%, rgba(0, 94, 222, 0.00) 100%);
     box-shadow: 5px 1px 5px rgba(36, 35, 35, 0.25);
+    transition: all 0.5s ease;
 
     &::-webkit-scrollbar {
         width: 15px;

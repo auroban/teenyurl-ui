@@ -1,14 +1,15 @@
-import React from 'react';
-import './App.css';
-import AppHeader from './components/AppHeader/AppHeader';
-import AppBody from './components/AppBody/AppBody';
+import "./App.css";
+import "./CommonStyles.css";
+
+import NavBar from './components/NavBar/NavBar';
+import AppBody from './components/AppBody/URLShortenerSection/AppBody';
 import AppFooter from './components/AppFooter/AppFooter';
 
 function App() {
 
   return (
     <div className="container-fluid App">
-      <AppHeader />
+      <NavBar />
       <AppBody />
       <AppFooter />
     </div>
