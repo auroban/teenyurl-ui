@@ -1,0 +1,6 @@
+.nav-bar {
+    grid-template-columns: 25% 50% 25%;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+}

@@ -1,0 +1,31 @@
+.sliding-button {
+    min-width: 150px;
+    min-height: 60px;
+    max-width: 400px;
+    max-height: 200px;
+    display: grid;
+    grid-template-columns: auto;
+    align-items: center;
+    justify-items: center;
+    border-radius: 50px;
+}
+
+.sliding-button:hover {
+    cursor: pointer;
+}
+
+.sliding-button-text-style {
+    color: #005EDE; 
+    text-shadow: -1px 0 #FFF, 0 1px #FFF, 1px 0 #FFF, 0 -1px #FFF;
+    text-align: center;
+    font-family: Staatliches;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.sliding-button-text-style:hover {
+    cursor: pointer;
+}
+
