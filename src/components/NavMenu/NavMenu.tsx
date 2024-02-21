@@ -1,11 +1,13 @@
 // Library imports
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 // CSS imports
 import "./NavMenu.css"
 
 // Component imports
 import SlidingButton from "../SlidingButton/SlidingButton";
+import HeaderContext from "../../contexts/HeaderContext";
+import HeaderContextProps from "../../interfaces/contextproperties/HeaderContextProps";
 
 type Props = {
     namesOfButtons: string[], 
@@ -13,6 +15,8 @@ type Props = {
 }
 
 const NavMenu = (props : Props) => {
+
+    const contextProp: HeaderContextProps | null = useContext(HeaderContext);
 
     if (props.selectedIndex && !(props.selectedIndex > 0 && props.selectedIndex < props.namesOfButtons.length)) {
         throw new Error("Selected Index cannot be greater than supplied button names");
@@ -31,15 +35,16 @@ const NavMenu = (props : Props) => {
 
     const handleClick = (index: number) => {
         console.debug("Selected Tab Index: ", index);
+        contextProp?.setCurrentViewIndex(index);
         setTranslation(translations[index]);
     }
-
     
     const slidingButtons = props.namesOfButtons.map((name, index) => {
         return <SlidingButton 
                     key={`sb-${index}`} 
                     buttonText={ name } 
-                    onClick={ () => handleClick(index) } />
+                    onClick={ () => handleClick(index) }
+                    className="nav-menu__item" />
     }); 
 
     const slidingSelection = props.namesOfButtons.map((_, index) => {
@@ -48,12 +53,12 @@ const NavMenu = (props : Props) => {
             return <span 
                         key={key} 
                         id="selected-tab" 
-                        className="selection-highlighter" 
+                        className="nav-menu__item" 
                         style={{transform: `translateX(${translation}%)`}}></span>
         } else {
             return <span 
                         key={key} 
-                        className="selection-highlighter"></span>
+                        className="nav-menu__item" ></span>
         }
     });
     

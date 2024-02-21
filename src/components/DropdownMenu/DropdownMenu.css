@@ -1,15 +1,13 @@
-#dd-menu-container {
-    min-width: 100px;
+.dd-menu-container {
     position: relative;
 }
 
-#dd-menu-header {
+.dd-menu-header {
     width: 100%;
-    display: grid;
     height: 50px;
+    display: grid;
     grid-template-columns: 80% 20%;
-    align-items: center;
-    justify-items: center;
+    place-items: center;
     border-radius: 10px;
     border-style: solid;
     box-sizing: border-box;
@@ -19,15 +17,15 @@
     background: linear-gradient(180deg, rgba(0, 94, 222, 0.00) 0%, #005EDE 28.15%, #005EDE 73.03%, rgba(0, 94, 222, 0.00) 100%);
 }
 
-#dd-header-image {
+.dd-header-image {
     max-width: 100%;
     max-height: 100%;
     margin-right: 50%;
 }
 
-#dd-menu-items {
+.dd-menu-items {
     position: absolute;
-    min-width: 100px;
+    width: 100%;
     margin-top: 5px;
     border-radius: 10px;
     overflow: hidden;
@@ -37,7 +35,7 @@
     border-color: #FFF;
     background: linear-gradient(180deg, rgba(0, 94, 222, 0.00) 0%, #0657c1 15.7%, #0656C2 84.03%, rgba(0, 94, 222, 0.00) 100%);
     box-shadow: 5px 1px 5px rgba(36, 35, 35, 0.25);
-    transition: all 0.5s ease;
+    transition: all 0.3s ease-in-out;
 
     &::-webkit-scrollbar {
         width: 15px;

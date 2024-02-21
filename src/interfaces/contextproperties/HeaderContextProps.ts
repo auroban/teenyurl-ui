@@ -1,9 +1,6 @@
-import ImageResource from "../resources/ImageResource";
-
 interface HeaderContextProps {
-
-    logoImage: ImageResource,
-    logoText: string,
+    currentView: string,
+    setCurrentViewIndex: (index: number) => void,
 }
 
 export default HeaderContextProps;
