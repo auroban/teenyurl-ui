@@ -23,23 +23,23 @@ const URLValidityView = () => {
     return (
         <div className="url-validity-view">
             <div className="grid-center">
-                <label className="no-margin label-text behavior--not-selectable">Valid For</label>
+                <label className="label-text behavior--not-selectable">Valid For</label>
             </div>
             <div className="alignment--div--center">
                 <input 
                     type="text"
                     value={ contextProps?.durationValue }
                     ref={ refTextInput }
-                    onChange={ () => onTextChange() }
-                    pattern="\d*" 
-                    className={ `url-validity-view__duration-textfield label-text` }/>
+                    onChange={ () => onTextChange() } 
+                    className={ `url-validity-view__duration-textfield ${ contextProps?.showInvalidDurationValueError === true ? "input--error" : "input--no-error" } label-text` }/>
             </div>
             <div className="grid-center">
                     <DropdownMenu 
                         className="url-validity-view__dropdown" 
                         header="Duration" 
                         items={ contextProps?.listOfDropdownItems ?? [] } 
-                        onClick={ onUnitSelection } />
+                        onClick={ onUnitSelection }
+                        highlightError={ contextProps?.showInvalidDurationUnitError ?? false } />
             </div>
         </div>
     );

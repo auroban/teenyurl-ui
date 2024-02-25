@@ -20,9 +20,11 @@ type State = {
     durationValue: string,
     showDurationUnitError: boolean,
     showDurationValueError: boolean,
+    showURLError: boolean,
     resultCloseIcon?: ImageResource,
     copyIcon?: ImageResource,
     showResultView?: boolean,
+    url?: string,
 }
 
 const URLShortenerView = (props: Props) => {
@@ -35,6 +37,7 @@ const URLShortenerView = (props: Props) => {
         durationValue : "1",
         showDurationUnitError : false,
         showDurationValueError : false,
+        showURLError : false,
         showResultView : false,
     }
 
@@ -52,15 +55,19 @@ const URLShortenerView = (props: Props) => {
     };
 
     const setDurationUnit = (index: number) => {
-        setViewState(prevState => ({ ...prevState, durationUnit : dropdownMenu[index] }));
+        setViewState(prevState => ({ ...prevState, durationUnit : dropdownMenu[index], showDurationUnitError : false }));
     }
 
     const setDurationValue = (value: string) => {
-        setViewState(prevState => ({...prevState, durationValue : value}));
+        setViewState(prevState => ({...prevState, durationValue : value, showDurationValueError : false}));
     }
 
     const clearResult = () => {
         setViewState(prevState => ({...prevState, showResultView : false}))
+    }
+
+    const setURL = (url: string) => {
+        setViewState(prevState => ({ ...prevState, url : url, showURLError : false }));
     }
 
     const onGo = async () => {
@@ -69,32 +76,10 @@ const URLShortenerView = (props: Props) => {
             return;
         }
 
-        if (!viewState.durationUnit) {
-            console.warn("No duration unit selected");
-            setViewState(prevState => ({ ...prevState, showDurationUnitError : true}))
+        if (!validateInput()) {
             return;
         }
-
-        if (!dropdownMenu.includes(viewState.durationUnit)) {
-            console.warn("Invalid duration unit selected");
-            setViewState(prevState => ({ ...prevState, showDurationUnitError : true}))
-            return;
-        }
-
-        const num = Number.parseInt(viewState.durationValue);
-
-        if (isNaN(num)) {
-            console.warn("Invalid duration value set");
-            setViewState(prevState => ({ ...prevState, showDurationValueError : true}))
-            return;
-        }
-
-        if (!(num >= 1 && num <= 999)) {
-            console.warn("Duration value not within permitted range 1 - 999");
-            setViewState(prevState => ({ ...prevState, showDurationValueError : true}))
-            return;
-        }
-
+        
         console.debug("API Called");
         const urlResponse = await API.sendNewURLRequest();
         console.debug(`Fetched URL Response: ${urlResponse}`);
@@ -102,20 +87,51 @@ const URLShortenerView = (props: Props) => {
         setViewState(prevState => ({...prevState, urlCreatedResponse : urlResponse, showResultView : true }));
     }
 
+    const validateInput = () : boolean => {
+
+        let durationValueError = false;
+        let durationUnitError = false;
+        let urlInputError = false;
+
+        if (!viewState.durationUnit || !dropdownMenu.includes(viewState.durationUnit)) {
+            console.warn("Invalid Duration Unit");
+            durationUnitError = true;
+        }
+
+        const num = Number.parseInt(viewState.durationValue);
+
+        if (isNaN(num) || !(num >= 1 && num <= 999)) {
+            console.warn("Invalid Duration Value");
+            durationValueError = true;
+        }
+
+        if (!viewState.url || viewState.url!.trim().length === 0) {
+            console.warn("Invalid URL");
+            urlInputError = true;
+        }
+
+        setViewState(prevState => ({ ...prevState, showDurationUnitError : durationUnitError, showDurationValueError : durationValueError, showURLError : urlInputError }));
+
+        return !(durationUnitError || durationValueError || urlInputError);
+
+    }
+
     const urlContextProps: URLContextProps = {
         listOfDropdownItems : dropdownMenu,
         defaultIndex : 1,
-        setDurationUnit : setDurationUnit,
-        setDurationValue : setDurationValue,
-        showInvalidDurationUnitError : false,
-        showInvalidDurationValueError : false,
+        showInvalidDurationUnitError : viewState.showDurationUnitError,
+        showInvalidDurationValueError : viewState.showDurationValueError,
+        showInvalidURLError : viewState.showURLError,
         urlCreatedResponse : viewState.urlCreatedResponse,
-        setURLCreatedResponse : setURLCreatedResponse,
         durationValue : viewState.durationValue,
         resultViewCloseIcon : viewState.resultCloseIcon,
         copyIcon : viewState.copyIcon,
         showResultView : viewState.showResultView,
         clearResult : clearResult,
+        setDurationUnit : setDurationUnit,
+        setDurationValue : setDurationValue,
+        setURL : setURL,
+        setURLCreatedResponse : setURLCreatedResponse,
     }
 
     useEffect(() => {

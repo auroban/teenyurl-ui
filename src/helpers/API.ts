@@ -13,8 +13,8 @@ class API {
                 shortURL : "https://www.turls.in/xyz",
             },
             error : {
-                code : "",
-                description : ""
+                code : "ERR001",
+                description : "SOMETHING WENT WRONG"
             }
         };
     }

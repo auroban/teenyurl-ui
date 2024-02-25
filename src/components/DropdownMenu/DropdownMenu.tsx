@@ -1,6 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 
 import "./DropdownMenu.css"
+
+
 import ImageResource from "../../interfaces/resources/ImageResource";
 import ImageResourceHelper from "../../helpers/ImageResourceHelper";
 
@@ -8,8 +10,9 @@ type Props = {
     className?: string,
     header: string,
     items : Array<string>, 
-    onClick : (param : number) => void, 
-    defaultIndex? : number,
+    onClick: (param : number) => void, 
+    defaultIndex?: number,
+    highlightError?: boolean
 }
 
 type State = {
@@ -106,7 +109,7 @@ const DropdownMenu = (props: Props) => {
     return (
         <div className={ `dd-menu-container ${ props.className }` } ref={ refContainer }>
             <div 
-                className="dd-menu-header behavior--not-selectable" 
+                className={ `dd-menu-header behavior--not-selectable ${ props.highlightError === true ? "dd-menu-header--error" : "dd-menu-header--no-error" }` } 
                 onClick={() => toggleMenu(internalState.menuState)}>
                 <div className="alignment--div--center dd-menu-header-item behavior--pointer-on-hover behavior--not-selectable">
                     <label 

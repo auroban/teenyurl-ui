@@ -1,0 +1,27 @@
+.toast-snippet {
+    background-color: #1d1c1c9a;
+    position: absolute;
+    z-index: 1;
+    color: #FFF;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+
+.toast-snippet--show {
+    visibility: visible;
+    animation: fade-in 0.5s, fade-out 0.5s 2s forwards;
+}
+
+.toast-snippet--hide {
+    visibility: hidden;
+}
+
+@keyframes fade-in {
+    from { opacity: 0;}
+    to { opacity: 1; }
+}
+
+@keyframes fade-out {
+    from { opacity: 1;}
+    to { opacity: 0; }
+}
