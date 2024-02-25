@@ -5,12 +5,14 @@
     max-height: 100%;
     display: grid;
     grid-template-columns: auto auto auto;
-    place-items: center;
+    align-items: end;
+    justify-content: center;
     column-gap: 10px;
+    padding-bottom: 30px;
 }
 
 .url-validity-view__duration-textfield {
-    width: 100%;
+    width: 50px;
     background: transparent;
     padding: 5px;
     box-sizing: border-box;
@@ -24,4 +26,8 @@
 
 .url-validity-view__dropdown {
     width: 150px;
+}
+
+.value--error {
+    border-bottom-color: #e22416;
 }

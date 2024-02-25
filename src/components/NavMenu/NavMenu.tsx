@@ -34,7 +34,6 @@ const NavMenu = (props : Props) => {
     const [translation, setTranslation] = useState(translations[currentIndex]);
 
     const handleClick = (index: number) => {
-        console.debug("Selected Tab Index: ", index);
         contextProp?.setCurrentViewIndex(index);
         setTranslation(translations[index]);
     }

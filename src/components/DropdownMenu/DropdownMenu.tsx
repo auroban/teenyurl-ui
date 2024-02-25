@@ -8,15 +8,15 @@ type Props = {
     className?: string,
     header: string,
     items : Array<string>, 
-    onClick : (param : string) => void, 
-    defaultValue? : string,
+    onClick : (param : number) => void, 
+    defaultIndex? : number,
 }
 
 type State = {
     menuState: string,
     arrowClassNames: string,
     menuItemsClassNames: string,
-    duration: string,
+    selectedIndex: number,
     ddIconResource: ImageResource | null,
 }
 
@@ -32,7 +32,7 @@ const DropdownMenu = (props: Props) => {
         menuState : stateInit,
         arrowClassNames : "",
         menuItemsClassNames : "state-collapsed",
-        duration : "",
+        selectedIndex : props.defaultIndex ? props.defaultIndex : -1,
         ddIconResource : null
     });
     
@@ -68,12 +68,12 @@ const DropdownMenu = (props: Props) => {
         stateRef.current = internalState.menuState;
     }, [internalState.menuState])
 
-    const items = props.items.map((item) => {
+    const items = props.items.map((item, index) => {
         return (
             <div 
-                key={item} 
+                key={`dd-mi-${index}`} 
                 className="alignment--div--center dd-menu-item label-text behavior--pointer-on-hover behavior--not-selectable" 
-                onClick={() => handleDuratioSelection(item)}>
+                onClick={() => handleDuratioSelection(index)}>
                     <label className="label-text behavior--pointer-on-hover behavior--not-selectable">
                         {item}
                     </label>
@@ -95,10 +95,10 @@ const DropdownMenu = (props: Props) => {
         }
     }
 
-    const handleDuratioSelection = (unit : string) => {
-        setInternalState(prevState => ({...prevState, duration : unit}))
+    const handleDuratioSelection = (index : number) => {
+        setInternalState(prevState => ({...prevState, selectedIndex : index}))
         toggleMenu(internalState.menuState);
-        props.onClick(unit);
+        props.onClick(index);
     }
 
     
@@ -111,8 +111,8 @@ const DropdownMenu = (props: Props) => {
                 <div className="alignment--div--center dd-menu-header-item behavior--pointer-on-hover behavior--not-selectable">
                     <label 
                         className="behavior--not-selectable behavior--pointer-on-hover label-text" 
-                        style={ internalState.duration === "" ? {color: "#dadada"} : {} }>
-                            { internalState.duration === "" ? props.header : internalState.duration }
+                        style={ internalState.selectedIndex === -1 ? {color: "#dadada"} : {} }>
+                            { internalState.selectedIndex === -1 ? props.header : props.items[internalState.selectedIndex] }
                     </label>
                 </div>
                 <div className="alignment--div--center dd-menu-header-item behavior--not-selectable behavior--pointer-on-hover">

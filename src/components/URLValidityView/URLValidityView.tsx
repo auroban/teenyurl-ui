@@ -1,20 +1,45 @@
 import "./URLValidityView.css";
 import DropdownMenu from "../DropdownMenu/DropdownMenu";
+import { useContext, useRef } from "react";
+import { URLContext } from "../../contexts/URLContext";
+
 
 const URLValidityView = () => {
 
-    let menuItems = [ "DAY", "MONTH", "YEAR" ];
-    
+    const contextProps = useContext(URLContext);
+
+    const refTextInput = useRef<HTMLInputElement>(null);
+
+    const onTextChange = () => {
+        if (refTextInput.current) {
+            contextProps?.setDurationValue(refTextInput.current.value);
+        }
+    }
+
+    const onUnitSelection = (index: number) => {
+        contextProps?.setDurationUnit(index);
+    }
+  
     return (
         <div className="url-validity-view">
             <div className="grid-center">
                 <label className="no-margin label-text behavior--not-selectable">Valid For</label>
             </div>
-            <div className="grid-center no-margin no-padding">
-                <input type="number" maxLength={4} min={1} max={9999} defaultValue={1} pattern="\d*" className="url-validity-view__duration-textfield label-text no-margin no-padding"/>
+            <div className="alignment--div--center">
+                <input 
+                    type="text"
+                    value={ contextProps?.durationValue }
+                    ref={ refTextInput }
+                    onChange={ () => onTextChange() }
+                    pattern="\d*" 
+                    className={ `url-validity-view__duration-textfield label-text` }/>
             </div>
             <div className="grid-center">
-                <DropdownMenu className="url-validity-view__dropdown" header="Duration" items={ menuItems } onClick={(param : string) => console.info("Item Clicked: ", param)}></DropdownMenu>
+                    <DropdownMenu 
+                        className="url-validity-view__dropdown" 
+                        header="Duration" 
+                        items={ contextProps?.listOfDropdownItems ?? [] } 
+                        onClick={ onUnitSelection } />
             </div>
         </div>
     );

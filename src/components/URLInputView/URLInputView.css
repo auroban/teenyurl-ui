@@ -4,7 +4,8 @@
     position: relative;
     display: grid;
     grid-template-columns: auto auto auto;
-    place-items: center;
+    align-items: end;
+    justify-items: center;
     column-gap: 20px;
 }
 
@@ -12,6 +13,7 @@
     height: 70px;
     width: 800px;
     line-height: 50px;
+    margin-bottom: 20px;
     padding-top: 5px;
     padding-bottom: 5px;
     padding-left: 20px;
@@ -41,11 +43,6 @@
     box-sizing: border-box;
     background-color: rgb(230, 230, 230);
     border-radius: 100%;
-
-    &:hover {
-        cursor: pointer;
-        box-shadow: 0 0 50px rgb(230, 230, 230);
-    }
 }
 
 .url-input-view__submit-button {
@@ -60,18 +57,6 @@
     background: #0656C2;
     transition: all 50ms;
     box-shadow: 5px 5px 5px rgba(36, 35, 35, 0.25);
-
-    &:active {
-        height: 90px;
-        width: 90px;
-    }
-}
-
-.url-input-view__submit-button:active > .url-input-view__submit-button-text {
-    font-size: 35px;
-}
-
-.url-input-view__submit-button-text {
     color: #FFF; 
     text-align: center;
     font-family: Staatliches;
@@ -79,8 +64,30 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
 
+.submit-wrapper--active {
     &:hover {
         cursor: pointer;
+        box-shadow: 0 0 50px rgb(230, 230, 230);
     }
+}
+.submit-wrapper--inactive {
+    cursor: not-allowed;
+    &:hover {
+        cursor: not-allowed;
+    }
+}
+
+.submit-button--active {
+    &:active {
+        height: 90px;
+        width: 90px;
+        font-size: 35px;
+    }
+}
+
+.submit-button--inactive {
+    cursor: not-allowed;
+    opacity: 0.3;
 }
