@@ -118,7 +118,7 @@ const ResultView = () => {
                 </div>
                 <div className="row__content--column-2">
                     <div className="row__inner">
-                        <input type="text" className="row-element__input" value={ ctx?.urlCreatedResponse?.data?.expiry.toLocaleDateString() + "-" + ctx?.urlCreatedResponse?.data?.expiry.toLocaleTimeString() } readOnly/>
+                        <input type="text" className="row-element__input" value={ ctx?.urlCreatedResponse?.data?.expiry.toLocaleString() } readOnly/>
                     </div>
                 </div>
             </section>
